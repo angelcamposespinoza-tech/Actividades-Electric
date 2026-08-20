@@ -19,6 +19,17 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown("""
+    <style>
+    html, body, [class*="css"], .stApp, input, textarea, select, button {
+        font-family: 'Segoe UI', sans-serif !important;
+    }
+    * {
+        text-transform: uppercase !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
@@ -156,10 +167,11 @@ elif seccion == "Almacén":
                 else:
                     agregar_fila(
                         "Materiales",
-                        [sku, nombre, categoria, unidad, stock_actual, stock_minimo, ubicacion],
+                        [sku.upper(), nombre.upper(), categoria.upper(), unidad.upper(),
+                         stock_actual, stock_minimo, ubicacion.upper()],
                         headers=HEADERS_MATERIALES
                     )
-                    st.success(f"Material '{nombre}' agregado correctamente.")
+                    st.success(f"Material '{nombre.upper()}' agregado correctamente.")
                     st.rerun()
 
 # ============================================================
@@ -200,8 +212,8 @@ elif seccion == "Planeación":
                 else:
                     agregar_fila(
                         "Proyectos",
-                        [cliente, ubicacion, tamano_kw, str(fecha), estado, notas],
+                        [cliente.upper(), ubicacion.upper(), tamano_kw, str(fecha), estado, notas.upper()],
                         headers=HEADERS_PROYECTOS
                     )
-                    st.success(f"Proyecto de '{cliente}' agregado correctamente.")
+                    st.success(f"Proyecto de '{cliente.upper()}' agregado correctamente.")
                     st.rerun()
