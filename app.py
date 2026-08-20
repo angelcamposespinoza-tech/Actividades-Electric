@@ -95,7 +95,7 @@ if seccion == "Inicio":
     st.markdown("""
     Bienvenido al sistema interno de PURELECTRIC.
 
-    Usa el menú de la izquierda para navegar entre secciones:
+    Utiliza el menú de la izquierda para navegar entre secciones:
 
     - **Almacén** — control de inventario de paneles, inversores, baterías, estructura y demás materiales.
     - **Planeación** — proyectos de instalación, requerimientos de material y estatus.
