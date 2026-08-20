@@ -10,8 +10,13 @@ from datetime import date
 # ============================================================
 st.set_page_config(
     page_title="PURELECTRIC",
-    page_icon="☀️",
+    page_icon=":sun:",
     layout="wide"
+)
+
+st.markdown(
+    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">',
+    unsafe_allow_html=True
 )
 
 SCOPES = [
@@ -62,7 +67,7 @@ ESTADOS_PROYECTO = ["Pendiente", "En proceso", "Completado"]
 # SIDEBAR - NAVEGACIÓN
 # ============================================================
 with st.sidebar:
-    st.markdown("## ☀️ PURELECTRIC")
+    st.markdown("## PURELECTRIC")
     seccion = option_menu(
         menu_title=None,
         options=["Inicio", "Almacén", "Planeación"],
@@ -74,15 +79,15 @@ with st.sidebar:
 # SECCIÓN: INICIO
 # ============================================================
 if seccion == "Inicio":
-    st.title("☀️ PURELECTRIC")
+    st.title("PURELECTRIC")
     st.subheader("Sistema de Almacén y Planeación")
     st.markdown("""
     Bienvenido al sistema interno de PURELECTRIC.
 
     Usa el menú de la izquierda para navegar entre secciones:
 
-    - **📦 Almacén** — control de inventario de paneles, inversores, baterías, estructura y demás materiales.
-    - **🗓️ Planeación** — proyectos de instalación, requerimientos de material y estatus.
+    - **Almacén** — control de inventario de paneles, inversores, baterías, estructura y demás materiales.
+    - **Planeación** — proyectos de instalación, requerimientos de material y estatus.
 
     Este sistema seguirá creciendo con más módulos conforme los vayamos definiendo.
     """)
@@ -91,7 +96,7 @@ if seccion == "Inicio":
 # SECCIÓN: ALMACÉN
 # ============================================================
 elif seccion == "Almacén":
-    st.title("📦 Almacén")
+    st.title("Almacén")
 
     tab_inventario, tab_agregar = st.tabs(["Inventario", "Agregar material"])
 
@@ -125,7 +130,7 @@ elif seccion == "Almacén":
                     df_filtrado["Stock actual"].astype(float) <= df_filtrado["Stock mínimo"].astype(float)
                 ]
                 if not bajo_stock.empty:
-                    st.warning(f"⚠️ {len(bajo_stock)} material(es) por debajo del stock mínimo")
+                    st.warning(f"{len(bajo_stock)} material(es) por debajo del stock mínimo")
                     st.dataframe(bajo_stock, use_container_width=True, hide_index=True)
             except (ValueError, TypeError):
                 pass
@@ -161,7 +166,7 @@ elif seccion == "Almacén":
 # SECCIÓN: PLANEACIÓN
 # ============================================================
 elif seccion == "Planeación":
-    st.title("🗓️ Planeación")
+    st.title("Planeación")
 
     tab_proyectos, tab_agregar = st.tabs(["Proyectos", "Agregar proyecto"])
 
